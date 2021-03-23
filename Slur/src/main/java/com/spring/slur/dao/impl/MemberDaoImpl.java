@@ -31,5 +31,10 @@ public class MemberDaoImpl implements MemberDao{
 		
 		return check;
 	}
+
+	@Override
+	public MemberVo loginMember(MemberVo memberVo) throws Exception {
+		return sqlSession.selectOne("loginMember", memberVo);
+	}
 	
 }

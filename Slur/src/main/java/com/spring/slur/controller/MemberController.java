@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -69,5 +70,30 @@ public class MemberController {
 		logger.info("checkId", locale);
 		
 		return memberService.checkId(memberId);
+	}
+	//로그인
+	@ResponseBody
+	@RequestMapping(value = "loginMember.do", method = RequestMethod.POST)
+	public String loginMember(Locale locale, MemberVo memberVo, HttpSession session) throws Exception {
+		logger.info("loginMember", locale);
+		
+		String result = "Y";
+		MemberVo loginMember = memberService.loginMember(memberVo);
+		session.setAttribute("loginMember", loginMember);
+		
+		if(loginMember == null) {
+			result = "N";
+		}
+		
+		return result;
+	}
+	//로그아웃
+	@RequestMapping(value = "logout.do", method = RequestMethod.GET)
+	public String logout(Locale locale, HttpSession session) throws Exception {
+		logger.info("loginMember", locale);
+		
+		session.removeAttribute("loginMember");
+		
+		return "redirect:mainPage.do";
 	}
 }

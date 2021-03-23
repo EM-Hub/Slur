@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="resources/css/loginPage.css">
-<script src="resources/js/loginPage.js"></script>
+<script src="resources/js/loginPage.js?ver=1"></script>
 </head>
 <body>
 <div id="container" align="center">
@@ -14,7 +14,7 @@
 		<h2>로그인</h2>
 	</div>
 	<div id="bodyContent" align="center">
-	<form action="login.do" method="post">
+	<form action="loginMember.do" method="post">
 		<table>
 			<colgroup>
 				<col width="15%">

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,10 +24,24 @@
 	box-sizing: border-box;
 }
 span{
-	font-size: 23px;
+	font-size: 20px;
 	font-weight: bold;
 }
+#logout:hover{
+	color: red;
+	transition: .5s;
+	cursor: pointer;
+}
 </style>
+<script type="text/javascript">
+$(document).on("click","#logout", function(){
+	if(confirm("로그아웃 하시겠습니까?") == true){
+		location.href = 'logout.do';
+	}else{
+		return;
+	}
+});
+</script>
 </head>
 <body>
 <div id="container">
@@ -34,8 +49,14 @@ span{
 		<a href="mainPage.do"><h1>Slur</h1></a>
 	</div>
 	<div id="headerR" align="right">
-		<a href="loginPage.do"><span>Login</span></a>&emsp;
-		<a href="joinPage.do"><span>Join</span></a>
+		<c:if test="${sessionScope.loginMember eq null }">
+			<a href="loginPage.do"><span>Login</span></a>&emsp;
+			<a href="joinPage.do"><span>Join</span></a>
+		</c:if>
+		<c:if test="${sessionScope.loginMember ne null }">
+			${sessionScope.loginMember.memberName }님 반갑습니다!&emsp;
+			<span id="logout">Logout</span>
+		</c:if>
 	</div>
 </div>
 </body>

@@ -9,4 +9,6 @@ public interface MemberDao {
 	public int insertMember(MemberVo memberVo) throws IOException;
 	
 	public String checkId(String memberId) throws Exception;
+	
+	public MemberVo loginMember(MemberVo memberVo) throws Exception;
 }
