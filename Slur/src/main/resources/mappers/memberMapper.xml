@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+				"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="memberMapper">
+	<resultMap type="com.spring.slur.vo.MemberVo" id="MemberVo">
+    	<result property="memberCode" 	column="MEMBER_CODE"/>
+    	<result property="memberId" 	column="MEMBER_ID"/>
+    	<result property="memberPw" 	column="MEMBER_PW"/>
+    	<result property="memberName" 	column="MEMBER_NAME"/>
+    	<result property="memberRrn" 	column="MEMBER_RRN"/>
+    	<result property="memberPhone" 	column="MEMBER_PHONE"/>
+    	<result property="zipCode" 	column="ZIP_CODE"/>
+    	<result property="memberAddr" 	column="member_addr"/>
+    	<result property="memberPhoto" 	column="MEMBER_PHOTO"/>
+    	<result property="joinDate" 	column="JOIN_DATE"/>
+    </resultMap>
+    
+    <!-- 회원가입 -->
+	<insert id="insertMember">
+		INSERT INTO MEMBER_INFO (
+			MEMBER_CODE
+			, MEMBER_ID
+			, MEMBER_PW
+			, MEMBER_NAME
+			, MEMBER_RRN
+			, MEMBER_PHONE
+			, ZIP_CODE
+			, MEMBER_ADDR
+			, JOIN_DATE
+			<if test="memberPhoto != null and memberPhoto != ''">
+				, MEMBER_PHOTO
+			</if>
+		) VALUES (
+			(SELECT NVL(MAX(MEMBER_CODE) +1, 1) FROM MEMBER_INFO)
+			, #{memberId}
+			, #{memberPw}
+			, #{memberName}
+			, #{memberRrn}
+			, #{memberPhone}
+			, #{zipCode}
+			, #{memberAddr}
+			, TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+			<if test="memberPhoto != null and memberPhoto != ''">
+				, #{memberPhoto}
+			</if>
+		)
+	</insert>
+	
+	<!-- id 중복체크 -->
+	<select id="checkId" resultType="String">
+		SELECT MEMBER_ID
+		FROM MEMBER_INFO
+		WHERE MEMBER_ID = #{memberId}
+	</select>
+	
+	<!-- 로그인 -->
+	<select id="loginMember" resultMap="MemberVo">
+		SELECT MEMBER_CODE 
+			, MEMBER_ID
+			, MEMBER_NAME
+			, MEMBER_PHONE
+			, ZIP_CODE
+			, MEMBER_ADDR
+			, JOIN_DATE
+			, MEMBER_PHOTO
+		FROM MEMBER_INFO
+		WHERE MEMBER_ID = #{memberId}
+		AND MEMBER_PW = #{memberPw}
+	</select>
+
+
+
+
+
+
+
+
+</mapper>
