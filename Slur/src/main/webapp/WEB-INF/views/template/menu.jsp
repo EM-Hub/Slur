@@ -11,7 +11,7 @@
 	height: 100%;
 	padding-top: 50px;
 	box-sizing: border-box;
-	background: #191970;
+	background: #162756;
 	color: white;
 }
 ul{

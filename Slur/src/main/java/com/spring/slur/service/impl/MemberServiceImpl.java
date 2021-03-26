@@ -30,4 +30,9 @@ public class MemberServiceImpl implements MemberService{
 		return memberDao.loginMember(memberVo);
 	}
 
+	@Override
+	public MemberVo myInfo(String memberId) throws Exception {
+		return memberDao.myInfo(memberId);
+	}
+
 }

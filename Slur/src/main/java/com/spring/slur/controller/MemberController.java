@@ -21,14 +21,20 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.spring.slur.service.MemberService;
 import com.spring.slur.vo.MemberVo;
 
-/**
- * Handles requests for the application home page.
- */
+
 @Controller
 public class MemberController {
 	@Autowired
 	MemberService memberService;
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+	
+	//회원가입 페이지
+	@RequestMapping(value = "joinPage.do", method = RequestMethod.GET)
+	public String joinPage(Locale locale, Model model) {
+		logger.info("joinPage", locale);
+		
+		return "member/joinPage";
+	}
 	
 	//회원가입
 	@ResponseBody
@@ -71,6 +77,14 @@ public class MemberController {
 		
 		return memberService.checkId(memberId);
 	}
+	
+	//로그인 페이지
+	@RequestMapping(value = "loginPage.do", method = RequestMethod.GET)
+	public String loginPage(Locale locale, Model model) {
+		logger.info("loginPage", locale);
+		
+		return "member/loginPage";
+	}
 	//로그인
 	@ResponseBody
 	@RequestMapping(value = "loginMember.do", method = RequestMethod.POST)
@@ -95,5 +109,17 @@ public class MemberController {
 		session.removeAttribute("loginMember");
 		
 		return "redirect:mainPage.do";
+	}
+	
+	//내정보 페이지
+	@RequestMapping(value = "myInfoPage.do", method = RequestMethod.GET)
+	public String myInfoPage(Locale locale, HttpSession session, Model model) throws Exception {
+		logger.info("myInfoPage", locale);
+		
+		MemberVo memberVo = (MemberVo)session.getAttribute("loginMember");
+		
+		model.addAttribute("myInfo", memberService.myInfo(memberVo.getMemberId()));
+		
+		return "member/myInfoPage";
 	}
 }

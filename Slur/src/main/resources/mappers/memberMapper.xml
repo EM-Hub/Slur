@@ -69,6 +69,12 @@
 		WHERE MEMBER_ID = #{memberId}
 		AND MEMBER_PW = #{memberPw}
 	</select>
+	
+	<select id="myInfo" resultMap="MemberVo">
+		SELECT *
+		FROM MEMBER_INFO
+		WHERE MEMBER_ID = #{memberId}
+	</select>
 
 
 

@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="resources/css/loginPage.css">
+<link rel="stylesheet" type="text/css" href="resources/css/loginPage.css?ver=1">
 <script src="resources/js/loginPage.js?ver=1"></script>
 </head>
 <body>

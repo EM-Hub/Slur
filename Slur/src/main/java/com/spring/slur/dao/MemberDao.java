@@ -11,4 +11,6 @@ public interface MemberDao {
 	public String checkId(String memberId) throws Exception;
 	
 	public MemberVo loginMember(MemberVo memberVo) throws Exception;
+	
+	public MemberVo myInfo(String memberId) throws Exception;
 }

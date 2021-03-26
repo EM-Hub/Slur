@@ -36,5 +36,10 @@ public class MemberDaoImpl implements MemberDao{
 	public MemberVo loginMember(MemberVo memberVo) throws Exception {
 		return sqlSession.selectOne("loginMember", memberVo);
 	}
+
+	@Override
+	public MemberVo myInfo(String memberId) throws Exception {
+		return sqlSession.selectOne("myInfo", memberId);
+	}
 	
 }

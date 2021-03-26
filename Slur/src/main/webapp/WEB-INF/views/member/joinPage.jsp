@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="resources/css/joinPage.css?ver=8">
+<link rel="stylesheet" type="text/css" href="resources/css/joinPage.css?ver=9">
 <script src="resources/js/joinPage.js?ver=16"></script>
 <!-- 우편번호 Api -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

@@ -32,6 +32,9 @@ span{
 	transition: .5s;
 	cursor: pointer;
 }
+.icon-home{
+	font-size: 20px;
+}
 </style>
 <script type="text/javascript">
 $(document).on("click","#logout", function(){
@@ -50,11 +53,14 @@ $(document).on("click","#logout", function(){
 	</div>
 	<div id="headerR" align="right">
 		<c:if test="${sessionScope.loginMember eq null }">
+			<a href="mainPage.do"><i class="icon-home"></i></a>&emsp;
 			<a href="loginPage.do"><span>Login</span></a>&emsp;
 			<a href="joinPage.do"><span>Join</span></a>
 		</c:if>
 		<c:if test="${sessionScope.loginMember ne null }">
 			${sessionScope.loginMember.memberName }님 반갑습니다!&emsp;
+			<a href="mainPage.do"><i class="icon-home"></i></a>&emsp;
+			<a href="myInfoPage.do"><span>마이페이지</span></a>&emsp;
 			<span id="logout">Logout</span>
 		</c:if>
 	</div>

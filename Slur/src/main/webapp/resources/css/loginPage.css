@@ -28,7 +28,7 @@ input[type="text"], input[type="password"]{
 }
 
 input[type="button"]{
-	background: #191970;
+	background: #162756;
 	color: white;
 	width: 70px;
 	height: 25px;
@@ -40,7 +40,7 @@ input[type="button"]{
 }
 input[type="button"]:hover{
 	background: white;
-	color: #191970;
+	color: #061439;
 	box-shadow: 0 0 4px 0;
 	transition: .5s;
 }

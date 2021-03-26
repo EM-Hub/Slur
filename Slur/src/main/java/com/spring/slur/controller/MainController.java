@@ -33,19 +33,5 @@ public class MainController {
 		
 		return "main/mainPage";
 	}
-	//회원가입 페이지
-	@RequestMapping(value = "joinPage.do", method = RequestMethod.GET)
-	public String joinPage(Locale locale, Model model) {
-		logger.info("joinPage", locale);
-		
-		return "member/joinPage";
-	}
-	//로그인 페이지
-	@RequestMapping(value = "loginPage.do", method = RequestMethod.GET)
-	public String loginPage(Locale locale, Model model) {
-		logger.info("loginPage", locale);
-		
-		return "member/loginPage";
-	}
 	
 }
