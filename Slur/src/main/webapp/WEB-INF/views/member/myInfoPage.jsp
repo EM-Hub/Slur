@@ -9,7 +9,7 @@
 <body>
 <div id="container" align="center">
 	<div id="bodyTitle" align="left">
-		<h2>내 정보</h2>
+		<h2>내 정보</h2> 
 	</div>
 	<div id="bodyContent" align="center">
 		<table>
